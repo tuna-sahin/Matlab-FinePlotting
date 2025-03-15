@@ -31,7 +31,7 @@ function plot_n = fineloglog(x,y,bodeState,titlename,xaxisname,yaxisname,xlimits
         xlimits = [xlimits(2) xlimits(1)];
     end
 
-    if (bodeState == 'on') | (bodeState == 'On')
+    if strcmp(bodeState,'on') || strcmp(bodeState,'On')
          loglog(x,abs(y^20),'DisplayName',strcat(legendname,'Magnitute'))
          hold on
          loglog(x,angle(y),'--','DisplayName','Phase')
@@ -52,8 +52,8 @@ function plot_n = fineloglog(x,y,bodeState,titlename,xaxisname,yaxisname,xlimits
     
 
 
-    dx = 10^((log10(xlimits(2)) - log10(xlimits(1))) * 0.1 )
-    dy = 10^((log10(ylimits(2)) - log10(ylimits(1))) * 0.1 )
+    dx = 10^((log10(xlimits(2)) - log10(xlimits(1))) * 0.1 );
+    dy = 10^((log10(ylimits(2)) - log10(ylimits(1))) * 0.1 );
     
     label_h1 = xlabel(xaxisname);
     label_h1.Position(1) = xlimits(2)*(dx); % change horizontal position of xlabel.
@@ -77,7 +77,7 @@ function plot_n = fineloglog(x,y,bodeState,titlename,xaxisname,yaxisname,xlimits
     set(get(gca,'title'),'Position', [sqrt(prod(xlimits)) ylimits(2)*(dy)]) %prevents the title from colliding with ylabel
     
     hold on
-    plot_n = plot([1,10^20],[1 10^20])
+    plot_n = plot([1,10^20],[1 10^20]);
 
     dx = dx^(1/4);
     dy = dy^(1/4);
